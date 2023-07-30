@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuzzFeedr</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Orbitron&family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Lora:ital@1&family=Orbitron&family=Oswald&family=Poppins:wght@200&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <div class="nav-bar">
+       
+        <input id="search-bar">
+        <button class="btn hover-underline-animation" id="world">World</button>
+        <button class="btn hover-underline-animation" id="sa">South Asia</button>
+        <button class="btn hover-underline-animation" id="india">India</button>
+        <button class="btn hover-underline-animation" id="ukraine">Ukraine</button>
+        <button class="btn hover-underline-animation" id="sports">Sports</button>
+        <button class="btn hover-underline-animation" id="Science">Science</button>
+        <button class="btn hover-underline-animation" id="Business">Business</button>
+        <button class="btn hover-underline-animation" id="Entertainment">Entertainment</button>
+        <button class="btn hover-underline-animation" id="Lifestyle">Lifestyle</button>
+
+    </div>
+    
+    <div class="swiper">
+        <div class="swiper-wrapper" id="swapper-wrapper">
+            <div class="swiper-slide"><img class="img" id='img1' src="https://static.standard.co.uk/2022/10/07/20/AFP_32KF87V.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart"/></div>
+            <div class="swiper-slide"><img class="img"id=img2 src="https://picsum.photos/200/300"/></div>
+            <div class="swiper-slide"><img class="img"id='img3' src="https://picsum.photos/200/300"></div>
+            <div class="swiper-slide"><img class="img" id='img1' src="https://picsum.photos/200/300"/></div>
+            <div class="swiper-slide"><img class="img"id=img2 src="https://picsum.photos/200/300"/></div>
+            <div class="swiper-slide"><img class="img" id='img3' src="https://picsum.photos/200/300"></div>
+            ...
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <main>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">Trending News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="trending-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">World News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="world-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">Ukraine News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="ukraine-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">India News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="india-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">Fashion News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="fashion-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">Sports News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="sports-container">
+            
+        </div>
+    </main>
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://picsum.photos/200/300" alt="news-image" id="news-image">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the title</h3>
+                <h6 class="news-source" id="news-source">jai shri ram</h6>
+                <p class="news-desc" id="news-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quasi reprehenderit culpa molestiae? Error pariatur culpa quisquam odio quaerat, sequi, asperiores voluptatum eius, neque molestias ut esse sint porro beatae.</p>
+            </div>
+        </div>
+    </template>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+        delay: 3500, 
+        disableOnInteraction: false, 
+    },
+});
+    </script>
+    <!-- <script>
+        const cards=Array.from(document.getElementsByClassName('card'))
+        cards.forEach((card)=>{
+        card.addEventListener('mouseover',()=>{
+            card.style.color='cyan'
+        })
+        card.addEventListener('mouseout',()=>{
+            card.style.color='black'
+        })
+    })
+    </script> -->
+  
+</body>
+</html>
