@@ -88,4 +88,8 @@ function fillDataInCard(cardClone,article){
         timeZone:'Asia/Jakarta'
     })
     newsSource.innerHTML=`${article.source.name}.${date}`
+    let arr=[newsImg,newsTitle,newsSource,newsDesc]
+    arr.forEach((element)=>{
+        element.addEventListener('click',()=>window.open(article.url))
+    })
 }
