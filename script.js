@@ -1,5 +1,5 @@
 const URL='https://newsapi.org/v2/everything?q='
-const API_KEY='6ded571115fc41d8b4643e8b2cd3ba61'
+const API_KEY='4c2db71147a7491e9f82e4a9f60bd3fa'
 const fashionContainer=document.getElementById('fashion-container')
 const sportsContainer=document.getElementById('sports-container')
 const trendingContainer=document.getElementById('trending-container')
@@ -8,14 +8,33 @@ const worldContainer=document.getElementById('world-container')
 const swapperContainer=document.getElementById('swapper-wrapper')
 const indiaContainer=document.getElementById('india-container')
 const entertainmentContainer=document.getElementById('entertainment-container')
-let imagesArray=Array.from(document.getElementsByClassName('img'))
-window.addEventListener('load',()=>fetchTrendingNews())
-window.addEventListener('load',()=>fetchFashionNews())
-window.addEventListener('load',()=>fetchSportsNews())
-window.addEventListener('load',()=>fetchIndiaNews())
-window.addEventListener('load',()=>fetchUkraineNews())
-window.addEventListener('load',()=>fetchWorldNews())
-window.addEventListener('load',()=>fetchEntertainmentNews())
+const searchButton=document.getElementById('search')
+const searchContainer=document.getElementById('search-container')
+const searchBar=document.getElementById('search-bar')
+const topResultsTemplate=document.getElementById('top-result')
+let imagesArray;
+
+window.addEventListener('load', () => {
+    imagesArray = Array.from(document.getElementsByClassName('img'));
+    fetchTrendingNews();
+    fetchFashionNews();
+    fetchSportsNews();
+    fetchIndiaNews();
+    fetchUkraineNews();
+    fetchWorldNews();
+    fetchEntertainmentNews();
+});
+async function fetchNews(query){
+    const cloneHeader=topResultsTemplate.content.cloneNode(true)
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data=await res.json()
+    bindData(data.articles,searchContainer)
+}
+searchButton.addEventListener('click',async ()=>{
+    const query=searchBar.value
+    if(!query) return
+    await fetchNews(query)
+})
 async function fetchFashionNews(){
     const query='fashion'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
@@ -56,7 +75,7 @@ async function fetchWorldNews(){
     bindData(data.articles.slice(0,8),worldContainer)
 }
 async function fetchEntertainmentNews(){
-    const query='hollywood'
+    const query='hollywood  bollywood'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
     imagesArray.forEach((imgElement, index) => {
@@ -73,6 +92,7 @@ async function fetchEntertainmentNews(){
     console.log(data)
     bindData(data.articles.slice(0,12),entertainmentContainer)
 }
+
 function bindData(articles,cardsContainer){
     const newsCardTemplate=document.getElementById('template-news-card')
     cardsContainer.innerHTML=''
