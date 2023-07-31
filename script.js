@@ -7,6 +7,7 @@ const ukraineContainer=document.getElementById('ukraine-container')
 const worldContainer=document.getElementById('world-container')
 const swapperContainer=document.getElementById('swapper-wrapper')
 const indiaContainer=document.getElementById('india-container')
+const entertainmentContainer=document.getElementById('entertainment-container')
 let imagesArray=Array.from(document.getElementsByClassName('img'))
 window.addEventListener('load',()=>fetchTrendingNews())
 window.addEventListener('load',()=>fetchFashionNews())
@@ -14,6 +15,7 @@ window.addEventListener('load',()=>fetchSportsNews())
 window.addEventListener('load',()=>fetchIndiaNews())
 window.addEventListener('load',()=>fetchUkraineNews())
 window.addEventListener('load',()=>fetchWorldNews())
+window.addEventListener('load',()=>fetchEntertainmentNews())
 async function fetchFashionNews(){
     const query='fashion'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
@@ -22,10 +24,10 @@ async function fetchFashionNews(){
     bindData(data.articles.slice(0,8),fashionContainer)
 }
 async function fetchSportsNews(){
-    const query='sports'
+    const query='Sports'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
-    bindData(data.articles.slice(0,10),sportsContainer)
+    bindData(data.articles.slice(0,12),sportsContainer)
 }
 async function fetchTrendingNews(){
     const query='trending'
@@ -44,10 +46,17 @@ async function fetchIndiaNews(){
     const query='india'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
-    bindData(data.articles.slice(0,8),indiaContainer)
+    bindData(data.articles.slice(0,10),indiaContainer)
 }
 async function fetchWorldNews(){
     const query='world'
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data=await res.json()
+    console.log(data)
+    bindData(data.articles.slice(0,8),worldContainer)
+}
+async function fetchEntertainmentNews(){
+    const query='hollywood'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
     imagesArray.forEach((imgElement, index) => {
@@ -62,7 +71,7 @@ async function fetchWorldNews(){
         }
     });
     console.log(data)
-    bindData(data.articles.slice(0,8),worldContainer)
+    bindData(data.articles.slice(0,12),entertainmentContainer)
 }
 function bindData(articles,cardsContainer){
     const newsCardTemplate=document.getElementById('template-news-card')
