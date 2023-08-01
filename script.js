@@ -12,8 +12,8 @@ const searchButton=document.getElementById('search')
 const searchContainer=document.getElementById('search-container')
 const searchBar=document.getElementById('search-bar')
 const topResultsTemplate=document.getElementById('top-result')
-let imagesArray;
-
+const topResults=document.getElementById('top-results')
+let imagesArray=[]
 window.addEventListener('load', () => {
     imagesArray = Array.from(document.getElementsByClassName('img'));
     fetchTrendingNews();
@@ -24,15 +24,20 @@ window.addEventListener('load', () => {
     fetchWorldNews();
     fetchEntertainmentNews();
 });
+topResults.addEventListener('click',()=>{
+    window.location.reload()
+})
 async function fetchNews(query){
-    const cloneHeader=topResultsTemplate.content.cloneNode(true)
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
+    console.log('hello')
+    topResults.style.display='block'
     bindData(data.articles,searchContainer)
 }
 searchButton.addEventListener('click',async ()=>{
     const query=searchBar.value
     if(!query) return
+    isSearchPerformed=true
     await fetchNews(query)
 })
 async function fetchFashionNews(){
