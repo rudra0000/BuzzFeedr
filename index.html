@@ -28,9 +28,7 @@
         <input id="search-bar" placeholder="ex:Chandrayaan-3">
         <button class="btn hover-underline-animation" id="search">Search</button>
     </div>
-    <template class="flex" id="top-result">
-        <h1>Top Results</h1><img src="">
-    </template>
+        <buttons class="btn hover-underline-animation"id="top-results">Home</buttons>
     <div class="card-container container flex" id="search-container">
             
     </div>
@@ -123,6 +121,7 @@
     </template>
     <script src="script.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    
     <script>
         const swiper = new Swiper('.swiper', {
     loop: true,
@@ -139,17 +138,5 @@
     },
 });
     </script>
-    <!-- <script>
-        const cards=Array.from(document.getElementsByClassName('card'))
-        cards.forEach((card)=>{
-        card.addEventListener('mouseover',()=>{
-            card.style.color='cyan'
-        })
-        card.addEventListener('mouseout',()=>{
-            card.style.color='black'
-        })
-    })
-    </script> -->
-  
 </body>
 </html>
