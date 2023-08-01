@@ -156,10 +156,14 @@ main{
     cursor:pointer;
 }
 
-.news-heading:hover{
+.card:hover{
+    #news-title{
+        color:gray;
+    }
+}
+.bar{.news-heading:hover{
     color:gray;
 }
-.bar{
     height:30\5px;
     width:10px;
     background: black;
@@ -190,9 +194,6 @@ main{
 #news-title{
     font-family:'oswald';
 }
-#news-title:hover{
-    color:gray;
-}
 .news-source{
     font-family:'oswald';
 }
@@ -222,4 +223,11 @@ main{
 .swiper-pagination{
     margin-bottom:-10px;
     background-color:gray;
+}
+#top-results{
+    display:none;
+    width:90px;
+    margin-top:60px;
+    margin-left:190px;
+    color:black;
 }
