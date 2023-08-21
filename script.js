@@ -7,27 +7,51 @@ const trendingContainer=document.getElementById('trending-container')
 const ukraineContainer=document.getElementById('ukraine-container')
 const worldContainer=document.getElementById('world-container')
 const swapperContainer=document.getElementById('swapper-wrapper')
+const southAsiaContainer=document.getElementById('south-asia-container')
 const indiaContainer=document.getElementById('india-container')
 const entertainmentContainer=document.getElementById('entertainment-container')
+const businessContainer=document.getElementById('businesscontainer')
+const tech=document.getElementById('tech-container')
 const searchButton=document.getElementById('search')
 const searchContainer=document.getElementById('search-container')
 const searchBar=document.getElementById('search-bar')
 const topResultsTemplate=document.getElementById('top-result')
 const topResults=document.getElementById('top-results')
+const world=document.getElementById('world')
+const sa=document.getElementById('sa')
+const india=document.getElementById('india')
+const ukraine=document.getElementById('ukraine')
+const sports=document.getElementById('sports')
+const science=document.getElementById('Science')
+const business=document.getElementById('Business')
+const entertainment=document.getElementById('Entertainment')
+const lifestyle=document.getElementById('Lifestyle')
 let imagesArray=[]
 window.addEventListener('load', () => {
     imagesArray = Array.from(document.getElementsByClassName('img'));
     fetchTrendingNews();
-    fetchFashionNews();
-    fetchSportsNews();
+    fetchWorldNews();
+    fetchSouthAsiaNews();
     fetchIndiaNews();
     fetchUkraineNews();
-    fetchWorldNews();
     fetchEntertainmentNews();
+    fetchFashionNews();
+    fetchTechNews()
+    fetchBusinessNews()
+    fetchSportsNews();
 });
 topResults.addEventListener('click',()=>{
     window.location.reload()
 })
+world.addEventListener('click',()=>fetchNews('world'))
+sa.addEventListener('click',()=>fetchNews('South Asia'))
+india.addEventListener('click',()=>fetchNews('india'))
+ukraine.addEventListener('click',()=>fetchNews('ukraine'))
+sports.addEventListener('click',()=>fetchNews('sports'))
+science.addEventListener('click',()=>fetchNews('technology'))
+business.addEventListener('click',()=>fetchNews('business'))
+entertainment.addEventListener('click',()=>fetchNews('hollywood bollywood'))
+lifestyle.addEventListener('click',()=>fetchNews('lifestyle'))
 async function fetchNews(query){
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
@@ -38,50 +62,71 @@ async function fetchNews(query){
 searchButton.addEventListener('click',async ()=>{
     const query=searchBar.value
     if(!query) return
-    isSearchPerformed=true
     await fetchNews(query)
 })
+window.addEventListener('keydown',async e=>{
+    let name=e.key
+    if(name=='Enter'){
+        let query=searchBar.value
+        if(query=='') return
+        await fetchNews(query)
+    }
+})
+async function fetchTechNews(){
+    const query='technology'
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data= await res.json()
+    bindData(data.articles.slice(0,12),tech)
+}
 async function fetchFashionNews(){
     const query='fashion'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
     console.log(data)
-    bindData(data.articles.slice(0,8),fashionContainer)
+    bindData(data.articles.slice(0,12),fashionContainer)
+   
+}
+async function fetchSouthAsiaNews(){
+    const query='south asia'
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data=await res.json()
+    bindData(data.articles.slice(0,12),southAsiaContainer)
+    console.log('done with south asia news')
+}
+async function fetchBusinessNews(){
+    const query='Business'
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data=await res.json()
+    bindData(data.articles.slice(0,12),businessContainer)
 }
 async function fetchSportsNews(){
     const query='cricket'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
-    bindData(data.articles.slice(0,10),sportsContainer)
+    bindData(data.articles.slice(0,12),sportsContainer)
 }
 async function fetchTrendingNews(){
     const query='trending'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
     
-    bindData(data.articles.slice(0,8),trendingContainer)
+    bindData(data.articles.slice(0,12),trendingContainer)
 }
 async function fetchUkraineNews(){
     const query='ukraine'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
-    bindData(data.articles.slice(0,8),ukraineContainer)
+    bindData(data.articles.slice(0,12),ukraineContainer)
 }
 async function fetchIndiaNews(){
     const query='india'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
-    bindData(data.articles.slice(0,10),indiaContainer)
+    bindData(data.articles.slice(0,12),indiaContainer)
+    console.log('india news loaded')
 }
 async function fetchWorldNews(){
     const query='world'
-    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
-    const data=await res.json()
-    console.log(data)
-    bindData(data.articles.slice(0,8),worldContainer)
-}
-async function fetchEntertainmentNews(){
-    const query='hollywood  bollywood'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
     imagesArray.forEach((imgElement, index) => {
@@ -95,6 +140,13 @@ async function fetchEntertainmentNews(){
             imgElement.src = data.articles[index].urlToImage;
         }
     });
+    console.log(data)
+    bindData(data.articles.slice(0,12),worldContainer)
+}
+async function fetchEntertainmentNews(){
+    const query='hollywood  bollywood'
+    const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
+    const data=await res.json()
     console.log(data)
     bindData(data.articles.slice(0,12),entertainmentContainer)
 }
