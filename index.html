@@ -37,7 +37,8 @@
     </div>
     <div class="swiper">
         <div class="swiper-wrapper" id="swapper-wrapper">
-            <div class="swiper-slide"><img class="img" id='img1' src="https://static.standard.co.uk/2022/10/07/20/AFP_32KF87V.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart"/></div>
+           
+            <div class="swiper-slide"><img class="logo" id='img1' src="buzzfeedr_logo.png"/></div>
             <div class="swiper-slide"><img class="img"id=img2 src="https://picsum.photos/200/300"/></div>
             <div class="swiper-slide"><img class="img"id='img3' src="https://picsum.photos/200/300"></div>
             <div class="swiper-slide"><img class="img" id='img4' src="https://picsum.photos/200/300"/></div>
@@ -71,6 +72,22 @@
         </div>
         <div class="header">
             <div class="bar"></div>
+            <h1 class="news-heading">South-Asia News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="south-asia-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">India News</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="india-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
             <h1 class="news-heading">Ukraine News</h1>
             <div class="underline"></div>
         </div>
@@ -85,14 +102,7 @@
         <div class="card-container container flex" id="entertainment-container">
             
         </div>
-        <div class="header">
-            <div class="bar"></div>
-            <h1 class="news-heading">India News</h1>
-            <div class="underline"></div>
-        </div>
-        <div class="card-container container flex" id="india-container">
-            
-        </div>
+        
         <div class="header">
             <div class="bar"></div>
             <h1 class="news-heading">Fashion News</h1>
@@ -103,12 +113,29 @@
         </div>
         <div class="header">
             <div class="bar"></div>
+            <h1 class="news-heading">Technology</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="tech-container">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
+            <h1 class="news-heading">Business</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="card-container container flex" id="businesscontainer">
+            
+        </div>
+        <div class="header">
+            <div class="bar"></div>
             <h1 class="news-heading">Sports News</h1>
             <div class="underline"></div>
         </div>
         <div class="card-container container flex" id="sports-container">
             
         </div>
+
     </main>
     <template id="template-news-card">
         <div class="card">
@@ -136,7 +163,7 @@
         prevEl: '.swiper-button-prev',
     },
     autoplay: {
-        delay: 3500, 
+        delay: 5000, 
         disableOnInteraction: false, 
     },
 });
