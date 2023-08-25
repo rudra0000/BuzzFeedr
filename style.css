@@ -361,18 +361,24 @@ main{
     }
     .img{
         width:100%;
+        /* height:700px; */
         height:100%;
         object-fit:fill;
     }
     #search-bar{
+        /* width:240px; */
         width:12.5vw;
         margin-left:0px;
         margin-top:0px;
+        /* height:53px; */
         height:6.2vh;
         border:2px solid #303030;
+        /* border-radius:6px; */
         border-radius:0.5vw;
+        /* padding-inline:12px; */
         padding-inline:0.65vw;
         font-family:'oswald','sans-serif';
+        /* font-size:23px; */
         font-size:1.3vw;
         background-color:#7f7f7f;
         outline:none;
@@ -426,9 +432,11 @@ main{
         padding:12px;
     }
     .nav-bar{
-        border:none;/
+        border:none;
+        /* height:10%; */
         height:12vh;
         width:100%;
+        /* border-radius:4px; */
         background-color:#7f7f7f;
         display:flex;
         justify-content:space-around;
@@ -438,6 +446,7 @@ main{
         margin-left:0px;
         background-color: #303030;
         margin-right:0.0vw;
+        /* height:55px; */
         height:6vh;
         color:black;
     
@@ -488,12 +497,16 @@ main{
 
     }
     .header{
+        /* margin-left:190px; */
         margin-left:15vw;
+        /* margin-bottom:40px; */
         margin-bottom:7vw;
+        /* margin-top:70px; */
         margin-top:10vh;
         width:80vw;
         display:flex;
         font-family:'oswald';
+        /* height:100px; */
         height:10vh;
       
     }
@@ -501,15 +514,37 @@ main{
         margin-left:20vw;
         background-color:gray;
         color:black;
+        /* width:140px; */
         width:5vw;
     }
     #top-results:hover{
         background-color:#555555;
     }
     .logo{
-        width:1000px;
+        /* width:1000px;
         height:100%;
+        object-fit:fill; */
+        width:75%;
         object-fit:fill;
+        /* margin-right:20vw; */
+    }
+    .slide-text {
+        position: absolute;
+        /* top: 50%; 
+        left: 50%; */
+        top:95%;
+        left:50%;
+        width:100%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0,0,0, 0.8);
+        color:#7f7f7f;
+        padding: 10px; 
+        border-radius: 5px; 
+        font-size: 18px; 
+        text-align: center; 
+        max-width: 100%; 
+        cursor:pointer;
+        font-family:'Oswald';
     }
 } 
 @media only screen and (min-width:2263px){
