@@ -1,6 +1,6 @@
 const URL='https://newsapi.org/v2/everything?q='
-// const API_KEY='4c2db71147a7491e9f82e4a9f60bd3fa'
-const API_KEY='6ded571115fc41d8b4643e8b2cd3ba61'
+const API_KEY='4c2db71147a7491e9f82e4a9f60bd3fa'
+// const API_KEY='6ded571115fc41d8b4643e8b2cd3ba61'
 const fashionContainer=document.getElementById('fashion-container')
 const sportsContainer=document.getElementById('sports-container')
 const trendingContainer=document.getElementById('trending-container')
@@ -26,22 +26,49 @@ const science=document.getElementById('Science')
 const business=document.getElementById('Business')
 const entertainment=document.getElementById('Entertainment')
 const lifestyle=document.getElementById('Lifestyle')
+const headers=Array.from(document.getElementsByClassName('header'))
+const navbar=document.getElementsByClassName('nav-bar')
 let imagesArray=[]
+let swiperText=[]
 window.addEventListener('load', () => {
     imagesArray = Array.from(document.getElementsByClassName('img'));
-    fetchTrendingNews();
+    swiperText=Array.from(document.getElementsByClassName('slide-text'))
     fetchWorldNews();
+    fetchTechNews()
+    fetchEntertainmentNews();
+    swiperText.forEach(element=>{
+        console.log('ye lo',element.href)
+    })
+    swiperText.forEach(element => {
+        element.addEventListener('click', ()=> {
+            console.log(element.href)
+            element.style.color = 'green'; 
+        });
+    });
+    fetchTrendingNews();
+   
     fetchSouthAsiaNews();
     fetchIndiaNews();
     fetchUkraineNews();
-    fetchEntertainmentNews();
+   
     fetchFashionNews();
-    fetchTechNews()
+    
     fetchBusinessNews()
     fetchSportsNews();
 });
 topResults.addEventListener('click',()=>{
     window.location.reload()
+})
+headers.forEach(header=>{
+    let child=header.querySelector('.news-heading')
+    header.addEventListener('click',()=>{
+        fetchNews(child.textContent)
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    })
+    
 })
 world.addEventListener('click',()=>fetchNews('world'))
 sa.addEventListener('click',()=>fetchNews('South Asia'))
@@ -86,6 +113,7 @@ async function fetchFashionNews(){
     bindData(data.articles.slice(0,12),fashionContainer)
    
 }
+
 async function fetchSouthAsiaNews(){
     const query='south asia'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
@@ -129,16 +157,27 @@ async function fetchWorldNews(){
     const query='world'
     const res=await fetch(`${URL}${query}&apiKey=${API_KEY}`)
     const data=await res.json()
+    let i=0;
+    console.log(data.articles)
     imagesArray.forEach((imgElement, index) => {
         if(!data.articles[index] || !data.articles[index].urlToImage){
             while(data.articles[index] && data.articles[index].urlToImage){
                 index++;
             }
             imgElement.src = data.articles[index].urlToImage;
+            console.log(data.articles[index].url)
+            swiperText[i].textContent=data.articles[index].title
+            swiperText[i].href=data.articles[index].url
+           
+            console.log('dsfad')
+            console.log(data.articles[index].title)
         }
         else{
             imgElement.src = data.articles[index].urlToImage;
+            swiperText[i].textContent=data.articles[index].title
+            swiperText[i].href=data.articles[index].url
         }
+        i+=1
     });
     console.log(data)
     bindData(data.articles.slice(0,12),worldContainer)
