@@ -8,17 +8,17 @@ It is a front-end project that communicates with a news API to fetch the request
 
 ## How to use
 
-### *Accessing
+### Accessing
 The website can be accessed easily by clicking on the following link and as the webpage is fully responsive and dynamic it can be accessed using any device.
 
-### *Finding News Articles
+### Finding News Articles
 The website already loads the latest news articles from popular news topics like the Ukraine War, India, South Asia etc. 
 News is displayed in a user-friendly card format, The card provides basic information but if the user clicks on the card it opens an extensive news-article of news for the user.
 
-### *Search Functionality
+### Search Functionality
 If the user cannot find the news articles they are looking for in the common section they can search their news on the search bar which is provided within the nav bar. This will provide the user with a whole set of articles based on the search query to select
 
-### *Buttons
+### Buttons
 For easy navigation, I have added several buttons and links to the webpage for example if buttons on the nav bar are clicked then several articles related to the corresponding button will pop up.
 
 ## Future Improvements
