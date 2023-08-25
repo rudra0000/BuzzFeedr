@@ -30,7 +30,7 @@ const navbar=document.getElementsByClassName('nav-bar')
 let imagesArray=[]
 let swiperText=[]
 window.addEventListener('load', () => {
-    console.log(API_KEY)
+    console.log(API_KEY,'hello')
     imagesArray = Array.from(document.getElementsByClassName('img'));
     swiperText=Array.from(document.getElementsByClassName('slide-text'))
     fetchWorldNews();
