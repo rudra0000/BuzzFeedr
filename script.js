@@ -1,6 +1,5 @@
 const URL='https://newsapi.org/v2/everything?q='
-const API_KEY='4c2db71147a7491e9f82e4a9f60bd3fa'
-// const API_KEY='6ded571115fc41d8b4643e8b2cd3ba61'
+const API='Your API key'
 const fashionContainer=document.getElementById('fashion-container')
 const sportsContainer=document.getElementById('sports-container')
 const trendingContainer=document.getElementById('trending-container')
