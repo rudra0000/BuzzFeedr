@@ -9,7 +9,8 @@ It is a front-end project that communicates with a news API to fetch the request
 ## How to use
 
 ### Accessing
-The website can be accessed easily by clicking on the following link and as the webpage is fully responsive and dynamic it can be accessed using any device.
+The website can be accessed easily by downloading the whole zip file having the code and assets locally  and can be run simply by clicking on the html file.
+
 
 ### Finding News Articles
 The website already loads the latest news articles from popular news topics like the Ukraine War, India, South Asia etc. 
